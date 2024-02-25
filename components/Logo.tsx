@@ -1,4 +1,5 @@
 import Link from "next/link";
+import LogoImage from "@/images/logo/logo.svg"
 import { AspectRatio } from "./ui/aspect-ratio";
 import Image from "next/image";
 
@@ -9,12 +10,12 @@ const Logo=() => {
           <AspectRatio
           ratio={16/9}
           className="flex item-center justify-center">
-            {/* <Image
+            <Image
             priority
             src={LogoImage}
             alt="logo"
             className="dark:filter dark:invert"
-            /> */}
+            />
 
           </AspectRatio>
 
