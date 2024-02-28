@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import ClientProvider from "@/components/ClientProvider";
 import FirebaseAuthProvidee from "@/components/FirebaseAuthProvidee";
+import SubscriptioProvider from "@/components/SubscriptioProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,15 +24,17 @@ export default function RootLayout({
       <html lang="ar" >
       <body className={inter.className}>
         <FirebaseAuthProvidee>
+          <SubscriptioProvider>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
-        >
+          >
           <Header />
           {children}
         </ThemeProvider>
+            </SubscriptioProvider> 
         </FirebaseAuthProvidee>
       </body>
     </html>
