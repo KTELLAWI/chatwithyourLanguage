@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import ClientProvider from "@/components/ClientProvider";
 import FirebaseAuthProvidee from "@/components/FirebaseAuthProvidee";
 import SubscriptioProvider from "@/components/SubscriptioProvider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,8 +32,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
           >
+              <Toaster/>
           <Header />
           {children}
+        
         </ThemeProvider>
             </SubscriptioProvider> 
         </FirebaseAuthProvidee>

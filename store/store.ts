@@ -1,14 +1,13 @@
 import { Subscription } from "@/type/subscriptions";
 import {create} from "zustand";
 
-export type LnguagesSupported = 
-|"en"
-|"ar"
-|"fr"
-|"es"
-|"ru"
-|"de"
-;
+export type LanguagesSupported = 
+    | "en"
+    | "ar"
+    | "fr"
+    | "es"
+    | "ru"
+    | "de";
 
 export const LanguageSupportedMap:Record<LnguagesSupported,string> = {
     en:"English",

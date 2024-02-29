@@ -33,7 +33,7 @@ const chatMemberConverter:FirestoreDataConverter<ChatMember>={
    return {
             userId: snapshot.id,
             email: data.email,
-            timestamp: data.timestamp ,
+            timestamp: data.timestamp.toDate() ,
             isAdmin: data.isAdmin,
             chatId: data.chatId,
             image: data.image,
