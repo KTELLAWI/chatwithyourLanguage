@@ -8,21 +8,24 @@ import ChatListRow from './ChatListRow';
 
 async function ChatList() {
     const session = await getServerSession(authOptions);
-    console.log("session",session);
-    const chatSnapshots = await getDocs(chatMembersCollectionGroupRef(session?.user.id!));
-  const initialChats = chatSnapshots.docs.map((doc)=>(
-    {
-        ...doc.data(),
-        timestamp:null,
-      }
-  )
- 
-  );
+    console.log("session", session);
+    const chatSnapshots = await getDocs(chatMembersCollectionGroupRef(session?.user.id));
+    const initialChats = chatSnapshots.docs.map((doc) => (
+        {
+            ...doc.data(),
+            timestamp: null,
+        }
+    )
+
+    );
+    console.log("sssssssssssssssssssssssssssssssssssss", initialChats);
     return (
-    <div>
-        <ChatListRow initialChats={initialChats}/>
+        <div>
+         
+
+            <ChatListRow initialChats={initialChats}/>
         </div>
-  )
+    )
 }
 
 export default ChatList

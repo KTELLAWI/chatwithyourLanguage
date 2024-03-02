@@ -1,6 +1,6 @@
 import { db } from "@/firebase";
 import { Subscription } from "@/type/subscriptions";
-import { DocumentData, FirestoreDataConverter, QueryDocumentSnapshot,SnapshotOptions, collection, doc, query,where } from "firebase/firestore";
+import { DocumentData, collectionGroup,FirestoreDataConverter, QueryDocumentSnapshot,SnapshotOptions, collection, doc, query,where } from "firebase/firestore";
 
 
 
@@ -21,7 +21,7 @@ const chatMemberConverter:FirestoreDataConverter<ChatMember>={
         userId: member.userId,
             email: member.email,
             timestamp: member.timestamp ,
-            isAdmin: !!member.isAdmin,
+            isAdmin: member.isAdmin,
             chatId: member.chatId,
             image: member.image,
 
@@ -31,9 +31,9 @@ const chatMemberConverter:FirestoreDataConverter<ChatMember>={
     
     const data = snapshot.data(options);
    return {
-            userId: snapshot.id,
+            userId: data.userId,
             email: data.email,
-            timestamp: data.timestamp.toDate() ,
+            timestamp: data.timestamp,
             isAdmin: data.isAdmin,
             chatId: data.chatId,
             image: data.image,
@@ -49,4 +49,4 @@ export const chatRef=(chatId:string,userId:string)=>doc(db,"chats",chatId,"membe
 
 export const chatMemberRef=(chatId:string)=> collection(db,"chats",chatId,"members").withConverter(chatMemberConverter);
 export const chatMemberAdminRef=(chatId:string)=> query(collection(db,"chats",chatId,"members"),where("isAdmin","==" ,true)).withConverter(chatMemberConverter);
-export const chatMembersCollectionGroupRef=(userId:string)=>query(collection(db,"members",),where("userId", "==", userId)).withConverter(chatMemberConverter);
+export const chatMembersCollectionGroupRef=(userId:string)=>query(collectionGroup(db,"members"),where("userId","==",userId),).withConverter(chatMemberConverter);
