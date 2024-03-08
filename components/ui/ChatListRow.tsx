@@ -8,8 +8,8 @@ function ChatListRow({initialChats}:{initialChats: ChatMember[]}) {
   return (
     <div>
         
-        { initialChats.map((chat)=>(
-            <ChatRow chatId={chat.chatId}/>
+        { initialChats.map((chat,index)=>(
+            <ChatRow key={index} chatId={chat.chatId}/>
         ))
         }
         </div>

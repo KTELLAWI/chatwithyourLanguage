@@ -7,7 +7,7 @@ const nextConfig = {
     //   }
     //   },
     images:{
-        domains:["github.com","*.com"]
+        domains:["github.com","lh3.googleusercontent.com"]
     },
     // headers: [
         

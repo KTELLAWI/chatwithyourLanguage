@@ -5,6 +5,7 @@ import { doc, getDocs } from 'firebase/firestore';
 import { getServerSession } from 'next-auth'
 import React from 'react'
 import ChatListRow from './ChatListRow';
+import ChatMessage from './ChatMessage';
 
 async function ChatList() {
     const session = await getServerSession(authOptions);
@@ -24,6 +25,7 @@ async function ChatList() {
          
 
             <ChatListRow initialChats={initialChats}/>
+            {/* <ChatMessage chatId="db1175cf-f1a6-4783-8cbc-54e83ecd86cf"/> */}
         </div>
     )
 }

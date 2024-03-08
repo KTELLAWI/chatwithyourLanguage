@@ -1,18 +1,24 @@
 import ChatList from "@/components/ui/ChatList";
+import ChatMessage from "@/components/ui/ChatMessage";
+import ChatPermissionError from "@/components/ui/ChatPermissionError";
 
-type prop = {
-    param?:{};
-    searhParams?:{
-        error?:string,
+type Props = {
+    param:{};
+    searchParams:{
+        error:string;
         
     };
 };
-export default function ChatsPage({}:prop ) {
+export default function ChatsPage({searchParams:{error}}:Props ) {
     return (
    <>
-   <div className='flex  justify-center '>
-   </div> 
+  {
+    error &&  (
+        <ChatPermissionError/>
+    )
+  }
    <ChatList/>
+   
    </>
   
     );

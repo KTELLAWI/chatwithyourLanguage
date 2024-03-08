@@ -4,7 +4,7 @@ import Image from 'next/image'
 export default function Home() {
   return (
  <>
- <div className=' flex  justify-center '>
+ <div className='justify-center '>
  <PricingCards redirect={true} />
  </div> 
  </>

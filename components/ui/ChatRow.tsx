@@ -8,7 +8,9 @@ import { useSession } from 'next-auth/react';
 import { authOptions } from '@/auth';
 import { useRouter } from 'next/navigation';
 import UserAvatar from '../UserAvatar';
+import { useLanguage } from '@/store/store';
 function ChatRow({ chatId }: { chatId: string }) {
+    const language = useLanguage((state)=>state.language)
 
     const { data: session } = useSession();
     const router = useRouter();
@@ -24,19 +26,19 @@ console.log("ddddddddddddddddddddd",messages);
             onClick={() => router.push(`/chat/${chatId}`)}
             className=" flex w-full p-5 items-center space-x-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-slate-700"
         >
-            {/* <UserAvatar
+            <UserAvatar
                 name={message?.user.name || session?.user.name}
                 image={message?.user.image || session?.user.image}
-            /> */}
+            />
 
             <div className="flex-1">
                 <p className="font-bold">
-                    {message && "New Chat"}
-                    {message ? message.user.name || session?.user.name : toString().split(" ")[0]}
+                    {!message && "New Chat"}
+                    {message ? message.user.name :session?.user.name.toString().split(" ")[0]}
                 </p>
 
-                <p className="text-gray-400 line-clamp-1">
-                    {message?.translated?.["en"] || "Get the conversation started..."}
+                <p className="text-green-400 line-clamp-1">
+                    {message?.translated?.[language]|| "Get the conversation started..."}
                 </p>
             </div>
 
@@ -48,13 +50,13 @@ console.log("ddddddddddddddddddddd",messages);
                 </p>
                
 
-                <p className="chat" id={prettyUUID()}></p>
+                <p className="chat" id={prettyUUID()}>chat #{prettyUUID()}</p>
             </div>
         </div>
     );
 
     return (
-        <div className='flex font-bold z-4'>
+        <div className='flex font-bold '>
           {
                 loading && (
                     <div className='flex w-full p-5 items-center space-x-2'>
